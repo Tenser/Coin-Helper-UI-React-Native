@@ -101,7 +101,71 @@ export default StyleSheet.create({
       fontSize: 16,
       padding: 2
     },
-    
+    search: {
+      flexDirection: 'row',
+      marginBottom: 10,
+    },
+    input: {
+       height: 40, 
+       width: 100,
+       borderColor: 'gray', 
+       borderWidth: 1,
+       backgroundColor: '#FFF',
+    },
+    detailList: {
+      backgroundColor: '#777',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: 50,
+    },
+    detailItem: {
+      flexDirection: 'row',
+      backgroundColor: '#739',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: 5,
+    },
+    detailInformation: {
+      //paddingRight: 20 
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 90,
+      fontSize: 10,
+      height: 32,
+      padding: 2
+    },
+    detailItem2: {
+      flexDirection: 'row',
+      backgroundColor: '#595',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: 5,
+    },
+    detailInformation2: {
+      //paddingRight: 20 
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 90,
+      fontSize: 19,
+      height: 35,
+      padding: 2
+    },
+    detailItem3: {
+      flexDirection: 'row',
+      backgroundColor: '#984',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: 10,
+    },
+    detailInformation3: {
+      //paddingRight: 20 
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 110,
+      fontSize: 25,
+      height: 50,
+      padding: 2
+    },
 
   });
   

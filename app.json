@@ -2,7 +2,7 @@
   "expo": {
     "name": "Coin-Helper",
     "slug": "Coin-Helper",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -18,6 +18,8 @@
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 2,
+      "icon": "./assets/icon2.jpg",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -26,6 +28,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "updates": {
+      "enabled": false
     },
     "extra": {
       "eas": {

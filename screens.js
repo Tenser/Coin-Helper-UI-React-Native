@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { Text, View, Button, ScrollView} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, Button, ScrollView, TextInput, TouchableOpacity} from 'react-native';
 import {Picker} from '@react-native-picker/picker'
-import { getRanking, getPremium } from './httpRequest';
-import { Item, PremiumItem } from './components';
+import { getRanking, getPremium, getResult, getDetail } from './httpRequest';
+import { Item, PremiumItem, SearchItem, DetailItemList } from './components';
 import styles from './styles';
 
 export function HomeScreen(){
@@ -193,8 +193,88 @@ export function PremiumScreen(){
     return (
         <View style={styles.container}>
         <Premium/>
-
+        
+        
         <StatusBar style="auto" />
         </View>
     )
+}
+
+export function Search(){
+  const [text, setText] = useState('');
+  const [data, setData] = useState(null);
+
+  const reload = function(){
+    if(text == "") return;
+    getResult(text)
+    .then(data => {
+      setData(data);
+      //console.log(data);
+    })
+  }
+  const Result = function(){
+    if (data == null) {
+      return (
+        <View>
+          <Text> Search your coin </Text>
+        </View>
+      )
+    }
+    return (
+      <View>
+        <ScrollView>
+              
+              {
+              data.map((item, index) => (
+              <SearchItem key={index} coinName={item.name} currency={item.currency} exchange={item.exchange} ></SearchItem>
+              ))}
+              <StatusBar style="auto" />
+                
+              
+            </ScrollView>
+      </View>
+    )
+  }
+  return (
+    <View style={styles.container}>
+      <View style={styles.search}>
+      <Text> symbol: </Text>
+      <View>
+        <TextInput
+        style={styles.input}
+        onChangeText={text => setText(text)}
+        value={text}
+      />  
+      </View>
+      <Button title="search" onPress={reload}> </Button>
+      </View>
+    
+      <Result></Result>
+    <StatusBar style="auto" />
+    </View>
+)
+}
+
+export function Detail({ route }){
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    getDetail(route.params.coinName)
+      .then(data => {
+        setData(data);
+        //console.log(data);
+      })
+  }, [])
+  
+  if (data == null){
+    return (
+      <View>
+        <Text>loading...</Text>
+      </View>
+    )
+  }
+  return(
+    <DetailItemList data={data}>
+
+    </DetailItemList>
+  )
 }
